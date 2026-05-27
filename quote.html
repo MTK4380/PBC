@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Quote | Pneumatic Business Consultants</title>
+  <meta name="description" content="Request a tyre supply quote from Pneumatic Business Consultants — government tenders, bulk orders, and local purchases.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="quote">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">PBC</span>
+        <span class="brand-text">
+          <span class="brand-name">Pneumatic Business Consultants</span>
+          <span class="brand-tagline">General Order Supply · Tyres Specialist</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="tyres.html" data-nav="tyres">Tyres</a></li>
+          <li><a href="tenders.html" data-nav="tenders">Government Tenders</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="contact.html" data-nav="contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Get pricing</p>
+        <h1>Request a quote</h1>
+        <p class="hero-lead">Tell us about your tyre requirements. We will respond with pricing and availability for tenders, fleet, or retail orders.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container quote-layout">
+        <form id="quote-form" class="quote-form" action="#" method="post">
+          <div class="form-row">
+            <label for="name">Full name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label for="company">Company / organization</label>
+            <input type="text" id="company" name="company" autocomplete="organization">
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone <span aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+92 300 000 0000">
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label for="category">Tyre category <span aria-hidden="true">*</span></label>
+            <select id="category" name="category" required>
+              <option value="">Select category</option>
+              <option value="Car tyres">Car tyres</option>
+              <option value="Truck tyres">Truck tyres</option>
+              <option value="Bike tyres">Bike tyres</option>
+              <option value="Mixed / multiple">Mixed / multiple</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="quantity">Estimated quantity</label>
+            <input type="text" id="quantity" name="quantity" placeholder="e.g. 50 units, 1 tender lot">
+          </div>
+          <div class="form-row">
+            <label for="message">Requirements <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" required placeholder="Sizes, brands, delivery location, tender reference (if applicable)…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send quote request</button>
+          <p class="form-note">Submitting opens your email app with the details pre-filled to info@pneumaticconsultants.com. You can also call <a href="tel:+923001234567">+92 300 123 4567</a>.</p>
+        </form>
+
+        <aside class="quote-aside">
+          <h2>What to include</h2>
+          <ul>
+            <li>Tyre size and vehicle type</li>
+            <li>Preferred brands (if any)</li>
+            <li>Delivery city and timeline</li>
+            <li>Government tender reference (if applicable)</li>
+          </ul>
+          <p style="margin-top:1.25rem; font-size:0.9375rem; color: var(--color-text-muted);">
+            Prefer to speak directly? Visit our <a href="contact.html" style="color: var(--color-primary); font-weight:600;">contact page</a>.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark brand-mark--footer" aria-hidden="true">PBC</span>
+        <p>Pneumatic Business Consultants — tyres and general order supply.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="tyres.html">Tyres</a>
+        <a href="tenders.html">Tenders</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="quote.html">Quote</a>
+      </nav>
+      <p class="footer-copy">&copy; 2017–2026 Pneumatic Business Consultants. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/site.js"></script>
+</body>
+</html>

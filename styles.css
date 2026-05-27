@@ -207,20 +207,14 @@ a {
   min-width: 0;
 }
 
-.brand-mark {
+.brand-logo {
   flex-shrink: 0;
-  width: 2.75rem;
   height: 2.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: var(--color-primary);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: auto;
+  max-width: 5.5rem;
+  object-fit: contain;
+  display: block;
   border-radius: var(--radius);
-  color: #fff;
 }
 
 .brand-text {
@@ -651,8 +645,9 @@ a.contact-card:hover {
   grid-column: 1;
 }
 
-.brand-mark--footer {
-  background: var(--color-dark-elevated);
+.brand-logo--footer {
+  height: 2.5rem;
+  max-width: 5rem;
 }
 
 .footer-brand p {

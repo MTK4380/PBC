@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mtk4380.github.io/PBC/sitemap.xml

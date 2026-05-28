@@ -70,8 +70,8 @@
   }
 
   function init() {
-    renderSection("car-tyres-catalog", "car", "Car tyres");
-    renderSection("truck-tyres-catalog", "truck", "Truck tyres");
+    renderSection("car-tyres-catalog-root", "car", "Car tyres");
+    renderSection("truck-tyres-catalog-root", "truck", "Truck tyres");
   }
 
   if (document.readyState === "loading") {

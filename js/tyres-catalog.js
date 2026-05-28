@@ -3,6 +3,8 @@
     return "PKR " + n;
   };
 
+  var titles = { car: "Car tyres", truck: "Truck tyres" };
+
   function renderProduct(item) {
     return (
       "<article class=\"catalog-product\" data-id=\"" + item.id + "\">" +
@@ -23,10 +25,11 @@
     );
   }
 
-  function renderSection(containerId, vehicle, title) {
+  function renderSection(containerId, vehicle) {
     var root = document.getElementById(containerId);
     if (!root || !window.PBC_Catalog) return;
 
+    var title = titles[vehicle] || "Tyres";
     var items = window.PBC_Catalog.getByVehicle(vehicle);
     if (!items.length) {
       root.innerHTML = "<p>No tyres listed in this category.</p>";
@@ -70,8 +73,10 @@
   }
 
   function init() {
-    renderSection("car-tyres-catalog-root", "car", "Car tyres");
-    renderSection("truck-tyres-catalog-root", "truck", "Truck tyres");
+    var vehicle = document.body.getAttribute("data-catalog");
+    if (vehicle) {
+      renderSection("tyre-catalog-root", vehicle);
+    }
   }
 
   if (document.readyState === "loading") {

@@ -1148,3 +1148,211 @@ a.contact-card:hover {
 .seo-links a:hover {
   color: var(--color-accent);
 }
+
+/* --- Tyre price lists --- */
+.price-lists-section {
+  padding: 4rem 0 5rem;
+  background: var(--color-surface);
+  border-top: 3px solid var(--color-accent);
+}
+
+.price-lists-section > .container > h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.price-list-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 42rem;
+}
+
+.price-list-intro a {
+  color: var(--color-navy);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.price-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-tab {
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: 2px solid var(--color-navy);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-navy);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.price-tab:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.price-tab.is-active {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.price-brand-panel {
+  display: none;
+}
+
+.price-brand-panel.is-active {
+  display: block;
+}
+
+.price-brand-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.35rem;
+}
+
+.price-effective {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.price-search {
+  width: 100%;
+  max-width: 24rem;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+
+.price-search:focus {
+  outline: 2px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.price-category {
+  margin-bottom: 2rem;
+}
+
+.price-category h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.price-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  background: var(--color-white);
+}
+
+.price-table thead {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.price-table th,
+.price-table td {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.price-table th {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.price-table tbody tr:hover {
+  background: rgba(255, 127, 0, 0.06);
+}
+
+.price-table td:last-child {
+  font-weight: 600;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.price-sheet-details {
+  margin-top: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1rem;
+  background: var(--color-bg);
+}
+
+.price-sheet-details summary {
+  font-weight: 600;
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.price-sheet-figure {
+  margin-top: 1rem;
+}
+
+.price-sheet-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.price-sheet-figure figcaption {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .price-table thead {
+    display: none;
+  }
+
+  .price-table tr {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .price-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0;
+    border: none;
+  }
+
+  .price-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+}

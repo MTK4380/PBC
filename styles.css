@@ -41,6 +41,9 @@
   --radius: 6px;
   --radius-lg: 10px;
   --header-height: 76px;
+  --header-bg: #ffffff;
+  --header-text: var(--color-navy);
+  --header-text-muted: var(--color-text-muted);
   --container: min(1120px, calc(100% - 2.5rem));
 }
 
@@ -216,15 +219,15 @@ a {
   border-color: #fff;
 }
 
-/* --- Header --- */
+/* --- Header (light bar so logo navy/orange reads clearly) --- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--color-black);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--color-accent);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-inner {
@@ -242,18 +245,21 @@ a {
   align-items: center;
   gap: 0.875rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--header-text);
   min-width: 0;
 }
 
 .brand-logo {
   flex-shrink: 0;
-  height: 2.75rem;
+  height: 3.25rem;
   width: auto;
-  max-width: 5.5rem;
+  max-width: 6.5rem;
   object-fit: contain;
   display: block;
   border-radius: var(--radius);
+  padding: 0.2rem 0.35rem;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--color-border);
 }
 
 .brand-text {
@@ -273,7 +279,7 @@ a {
 
 .brand-tagline {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--header-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -289,7 +295,7 @@ a {
 .site-nav a {
   display: block;
   padding: 0.5rem 0.875rem;
-  color: #cbd5e1;
+  color: var(--header-text-muted);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -298,7 +304,7 @@ a {
 }
 
 .site-nav a:hover {
-  color: var(--color-white);
+  color: var(--header-text);
   background: var(--color-orange-soft);
 }
 
@@ -322,7 +328,7 @@ a {
   height: 2.5rem;
   padding: 0.5rem;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   cursor: pointer;
 }
@@ -330,7 +336,7 @@ a {
 .nav-toggle span {
   display: block;
   height: 2px;
-  background: #fff;
+  background: var(--header-text);
   border-radius: 1px;
   transition: transform 0.2s, opacity 0.2s;
 }
@@ -776,8 +782,9 @@ a.contact-card:hover {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--color-dark);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
     padding: 0.5rem 1.25rem 1.25rem;
     display: none;
   }
@@ -880,7 +887,7 @@ a.contact-card:hover {
 }
 
 .site-nav a.is-active {
-  color: var(--color-white);
+  color: var(--header-text);
   background: var(--color-orange-soft);
   box-shadow: inset 0 -2px 0 var(--color-accent);
 }

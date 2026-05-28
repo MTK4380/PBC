@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Tyre Finder | Pneumatic Business Consultants</title>
+  <meta name="description" content="Find tyres by vehicle type and rim size. Shop matching tyres from PBC online store.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="finder">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand"><img src="images/logo.png" alt="PBC" class="brand-logo" width="88" height="44"><span class="brand-name">Pneumatic Business Consultants</span></a>
+      <nav id="site-nav" class="site-nav"><ul>
+        <li><a href="shop.html" data-nav="shop">Shop</a></li>
+        <li><a href="tyre-finder.html" data-nav="finder">Tyre Finder</a></li>
+        <li><a href="cart.html" class="nav-cart">Cart <span class="cart-badge" hidden>0</span></a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main" class="section">
+    <div class="container" style="max-width:32rem">
+      <h1>Tyre finder</h1>
+      <p class="seo-intro">Select your vehicle type and rim size to see matching tyres — similar to Tyre Point’s car tyre finder.</p>
+      <form id="finder-form" class="quote-form">
+        <div class="form-row">
+          <label for="vehicle">Vehicle type</label>
+          <select id="vehicle" name="vehicle" required>
+            <option value="car">Car / SUV</option>
+            <option value="truck">Truck / Commercial</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="rim">Rim size</label>
+          <select id="rim" name="rim">
+            <option value="">Any rim</option>
+            <option value="R12">R12</option>
+            <option value="R13">R13</option>
+            <option value="R14">R14</option>
+            <option value="R15">R15</option>
+            <option value="R16">R16</option>
+            <option value="R17">R17</option>
+            <option value="R18">R18</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="q">Optional keyword</label>
+          <input type="text" id="q" name="q" placeholder="e.g. Thunder, Euro">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Find tyres</button>
+      </form>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container"><p class="footer-copy">&copy; 2017–2026 PBC</p></div></footer>
+  <script src="js/cart.js"></script>
+  <script>
+    document.getElementById("finder-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var fd = new FormData(e.target);
+      var p = new URLSearchParams();
+      if (fd.get("vehicle")) p.set("vehicle", fd.get("vehicle"));
+      if (fd.get("rim")) p.set("rim", fd.get("rim"));
+      if (fd.get("q")) p.set("q", fd.get("q"));
+      window.location.href = "shop.html?" + p.toString();
+    });
+  </script>
+  <script src="js/site.js"></script>
+</body>
+</html>

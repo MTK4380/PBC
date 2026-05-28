@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Tyres | Admin | PBC</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="section">
+    <div class="container" style="max-width:40rem">
+      <h1>Post tyres (admin)</h1>
+      <p class="form-note">Listings save in this browser only. For production, connect a database backend.</p>
+
+      <form id="admin-login" class="quote-form">
+        <div class="form-row"><label for="password">Admin password</label><input type="password" id="password" name="password" required></div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+      <div id="admin-panel" hidden>
+        <form id="listing-form" class="quote-form">
+          <h2>New tyre listing</h2>
+          <div class="form-row"><label>Brand name</label><input name="brand" required placeholder="GTR TYRE"></div>
+          <div class="form-row"><label>Brand ID</label><select name="brandId"><option value="gtr">gtr</option><option value="sr">sr</option><option value="gr">gr</option><option value="custom">custom</option></select></div>
+          <div class="form-row"><label>Category label</label><input name="category" placeholder="PCR — Passenger"></div>
+          <div class="form-row"><label>Vehicle</label><select name="vehicle"><option value="car">car</option><option value="truck">truck</option></select></div>
+          <div class="form-row"><label>Size</label><input name="size" required placeholder="195/65 R15"></div>
+          <div class="form-row"><label>Design</label><input name="design" required></div>
+          <div class="form-row form-row--half"><div><label>Ply</label><input name="ply" type="number" value="4"></div><div><label>Price PKR</label><input name="price" type="number" required></div></div>
+          <button type="submit" class="btn btn-primary">Publish to shop</button>
+        </form>
+        <h2>Posted listings</h2>
+        <div id="admin-listings"></div>
+      </div>
+    </div>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/price-lists.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

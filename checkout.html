@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Pneumatic Business Consultants</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body data-page="checkout">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="PBC" class="brand-logo" width="88" height="44">
+        <span class="brand-text"><span class="brand-name">Pneumatic Business Consultants</span></span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="cart.html" data-nav="cart" class="nav-cart">Cart <span class="cart-badge" hidden>0</span></a></li>
+          <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container checkout-layout">
+      <div class="checkout-col">
+        <h1>Checkout</h1>
+        <div id="checkout-summary"></div>
+      </div>
+      <div class="checkout-col">
+        <form id="checkout-form" class="quote-form">
+          <h2>Delivery details</h2>
+          <div class="form-row"><label for="name">Full name *</label><input id="name" name="name" required></div>
+          <div class="form-row"><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" required></div>
+          <div class="form-row"><label for="email">Email</label><input id="email" name="email" type="email"></div>
+          <div class="form-row"><label for="address">Address *</label><textarea id="address" name="address" required></textarea></div>
+          <div class="form-row"><label for="city">City *</label><input id="city" name="city" required></div>
+          <h2>Payment method</h2>
+          <div id="payment-methods"></div>
+          <div class="form-row" id="txn-row">
+            <label for="transactionId">Transaction ID (bank / JazzCash)</label>
+            <input id="transactionId" name="transactionId" placeholder="Enter after payment">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Place order</button>
+          <p class="form-note">Secure shopping: your order is saved locally and sent to our team for confirmation.</p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p class="footer-copy">&copy; 2017–2026 Pneumatic Business Consultants</p></div></footer>
+  <script src="js/config.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

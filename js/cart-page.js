@@ -34,9 +34,9 @@
       "<p class=\"cart-note\">Consumer list prices · Final invoice may vary for tender or bulk orders.</p>" +
       "<div class=\"page-actions\">" +
       "<button type=\"button\" class=\"btn btn--on-light btn-secondary\" id=\"cart-clear\">Clear cart</button>" +
-      "<a href=\"car-tyres.html\" class=\"btn btn--on-light btn-secondary\">Car tyres</a>" +
-      "<a href=\"truck-tyres.html\" class=\"btn btn--on-light btn-secondary\">Truck tyres</a>" +
-      "<button type=\"button\" class=\"btn btn-primary\" id=\"cart-checkout\">Request quote with cart</button>" +
+      "<a href=\"shop.html\" class=\"btn btn--on-light btn-secondary\">Continue shopping</a>" +
+      "<a href=\"checkout.html\" class=\"btn btn-primary\">Proceed to checkout</a>" +
+      "<button type=\"button\" class=\"btn btn--on-light btn-secondary\" id=\"cart-checkout\">Email quote request</button>" +
       "</div></div>";
 
     root.querySelectorAll(".cart-line-qty").forEach(function (input) {

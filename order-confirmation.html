@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | PBC</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="section">
+    <div class="container" style="max-width:36rem;text-align:center">
+      <h1>Thank you for your order</h1>
+      <p id="order-msg">Your order has been received.</p>
+      <div class="page-actions page-actions--center">
+        <a href="shop.html" class="btn btn-primary">Continue shopping</a>
+        <a href="index.html" class="btn btn--on-light btn-secondary">Home</a>
+      </div>
+    </div>
+  </main>
+  <script>
+    try {
+      var o = JSON.parse(sessionStorage.getItem("pbc-last-order") || "{}");
+      if (o.id) {
+        document.getElementById("order-msg").textContent =
+          "Order " + o.id + " placed successfully. We will contact you at " + (o.customer && o.customer.phone) + " to confirm delivery and payment.";
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>

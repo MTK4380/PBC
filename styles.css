@@ -1640,3 +1640,184 @@ a.contact-card:hover {
     color: var(--color-text-muted);
   }
 }
+
+/* --- E-commerce shop (Tyre Point style) --- */
+.page-hero--compact {
+  padding: 2.5rem 0 2rem;
+}
+
+.shop-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem 0 4rem;
+  align-items: start;
+}
+
+.filter-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: sticky;
+  top: 5.5rem;
+}
+
+.filter-panel h2 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: var(--color-navy);
+}
+
+.form-row--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.shop-result-count {
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 1.25rem;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.shop-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.shop-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.shop-card-img {
+  height: 8rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.shop-card-img--car {
+  background-image: linear-gradient(160deg, var(--color-navy-light), var(--color-navy));
+}
+
+.shop-card-img--truck {
+  background-image: linear-gradient(160deg, rgba(255, 127, 0, 0.3), var(--color-navy));
+}
+
+.shop-card-body {
+  padding: 1.25rem;
+}
+
+.shop-card-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.shop-card-title {
+  font-size: 1.0625rem;
+  margin-bottom: 0.25rem;
+}
+
+.shop-card-title a {
+  color: var(--color-navy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.shop-card-title a:hover {
+  color: var(--color-accent);
+}
+
+.shop-card-design {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.shop-card-price {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.shop-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.shop-card-actions .catalog-qty {
+  width: 3.5rem;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.shop-empty {
+  grid-column: 1 / -1;
+  color: var(--color-text-muted);
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.checkout-totals {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.checkout-totals--grand {
+  font-size: 1.125rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  cursor: pointer;
+}
+
+.payment-detail {
+  margin: 0 0 1rem 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.product-detail {
+  max-width: 32rem;
+}
+
+@media (max-width: 900px) {
+  .shop-layout,
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-panel {
+    position: static;
+  }
+}

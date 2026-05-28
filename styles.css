@@ -1149,7 +1149,227 @@ a.contact-card:hover {
   color: var(--color-accent);
 }
 
-/* --- Tyre price lists --- */
+/* --- Cart nav --- */
+.nav-cart {
+  position: relative;
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  margin-left: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: var(--color-white);
+  color: var(--color-navy);
+  border-radius: 999px;
+}
+
+.site-nav .nav-cart.is-active .cart-badge {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* --- Tyre categories + catalog --- */
+.category-block {
+  margin-bottom: 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-block-header {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: 0;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.category-block-header .product-visual {
+  height: 100%;
+  min-height: 8rem;
+}
+
+.category-block-intro {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category-block-intro h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.category-block-intro p {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.category-catalog {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.catalog-toolbar {
+  margin-bottom: 1.25rem;
+}
+
+.catalog-count {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+
+.catalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.catalog-product {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem 1.5rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.catalog-product-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.catalog-brand {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.catalog-product-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+
+.catalog-product-spec {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.catalog-product-actions {
+  text-align: right;
+}
+
+.catalog-product-price {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.catalog-qty-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.catalog-qty {
+  width: 4rem;
+  padding: 0.5rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.btn-add-cart {
+  white-space: nowrap;
+}
+
+/* --- Cart page --- */
+.cart-empty {
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+}
+
+.cart-empty a {
+  color: var(--color-navy);
+  font-weight: 600;
+}
+
+.cart-line-meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.cart-summary {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.cart-subtotal {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-note {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.cart-remove {
+  background: none;
+  border: none;
+  color: #c0392b;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cart-table td {
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .category-block-header {
+    grid-template-columns: 1fr;
+  }
+
+  .category-block-header .product-visual {
+    min-height: 6rem;
+  }
+
+  .catalog-product {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-product-actions {
+    text-align: left;
+  }
+
+  .catalog-qty-row {
+    justify-content: flex-start;
+  }
+}
+
+/* --- Tyre price lists (legacy tables) --- */
 .price-lists-section {
   padding: 4rem 0 5rem;
   background: var(--color-surface);

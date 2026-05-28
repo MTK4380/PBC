@@ -1309,6 +1309,11 @@ a.contact-card:hover {
   background: var(--color-bg);
 }
 
+.catalog-product--hidden,
+.catalog-product[hidden] {
+  display: none !important;
+}
+
 .catalog-product-meta {
   font-size: 0.75rem;
   color: var(--color-text-muted);

@@ -5,9 +5,20 @@
 
   var titles = { car: "Car tyres", truck: "Truck tyres" };
 
+  function searchText(item) {
+    return [
+      item.brand,
+      item.category,
+      item.size,
+      item.design,
+      String(item.ply),
+      String(item.price)
+    ].join(" ").toLowerCase();
+  }
+
   function renderProduct(item) {
     return (
-      "<article class=\"catalog-product\" data-id=\"" + item.id + "\">" +
+      "<article class=\"catalog-product\" data-id=\"" + item.id + "\" data-search=\"" + searchText(item).replace(/"/g, "") + "\">" +
       "<div class=\"catalog-product-info\">" +
       "<p class=\"catalog-product-meta\"><span class=\"catalog-brand\">" + item.brand + "</span> · " + item.category + "</p>" +
       "<h3 class=\"catalog-product-title\">" + item.size + " — " + item.design + "</h3>" +
@@ -47,12 +58,33 @@
       items.map(renderProduct).join("") +
       "</div>";
 
-    root.querySelector(".catalog-search").addEventListener("input", function (e) {
-      var q = e.target.value.trim().toLowerCase();
-      root.querySelectorAll(".catalog-product").forEach(function (card) {
-        card.hidden = q.length > 0 && card.textContent.toLowerCase().indexOf(q) === -1;
+    var searchInput = root.querySelector(".catalog-search");
+    var countEl = root.querySelector(".catalog-count");
+    var products = root.querySelectorAll(".catalog-product");
+
+    function applySearch() {
+      var q = searchInput.value.trim().toLowerCase();
+      var visible = 0;
+
+      products.forEach(function (card) {
+        var haystack = card.getAttribute("data-search") || card.textContent.toLowerCase();
+        var match = !q || haystack.indexOf(q) !== -1;
+        card.classList.toggle("catalog-product--hidden", !match);
+        if (match) visible += 1;
       });
-    });
+
+      if (countEl) {
+        if (q) {
+          countEl.textContent = visible + " of " + items.length + " tyres shown · Prices effective " + window.PBC_Catalog.effectiveDate;
+        } else {
+          countEl.textContent = items.length + " tyres · Prices effective " + window.PBC_Catalog.effectiveDate;
+        }
+      }
+    }
+
+    searchInput.addEventListener("input", applySearch);
+    searchInput.addEventListener("search", applySearch);
+    searchInput.addEventListener("keyup", applySearch);
 
     root.querySelectorAll(".btn-add-cart").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -61,7 +93,7 @@
           return p.id === id;
         });
         if (!product) return;
-        var qtyInput = root.querySelector("#qty-" + id);
+        var qtyInput = document.getElementById("qty-" + id);
         var qty = qtyInput ? qtyInput.value : 1;
         window.PBC_Cart.add(product, qty);
         btn.textContent = "Added";

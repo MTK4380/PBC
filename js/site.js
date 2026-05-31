@@ -21,7 +21,31 @@
     document.body.appendChild(link);
   }
 
+  function initHeader() {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+
+    var hasTopHero = document.querySelector('main > .hero, main > .page-hero');
+    var scrollThreshold = 16;
+
+    function updateHeader() {
+      if (!hasTopHero || window.scrollY > scrollThreshold) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    }
+
+    if (!hasTopHero) {
+      header.classList.add('is-scrolled');
+    } else {
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
+    }
+  }
+
   function initNav() {
+    var header = document.querySelector('.site-header');
     var toggle = document.querySelector('.nav-toggle');
     var nav = document.getElementById('site-nav');
     if (!toggle || !nav) return;
@@ -39,6 +63,7 @@
       var open = nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (header) header.classList.toggle('is-menu-open', open);
     });
 
     nav.querySelectorAll('a').forEach(function (link) {
@@ -46,6 +71,7 @@
         nav.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Open menu');
+        if (header) header.classList.remove('is-menu-open');
       });
     });
   }
@@ -150,6 +176,7 @@
 
   function init() {
     injectWhatsAppButton();
+    initHeader();
     initNav();
     renderQuotationPanel();
     window.addEventListener('pbc-quotation-updated', renderQuotationPanel);

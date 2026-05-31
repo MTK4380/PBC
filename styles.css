@@ -234,15 +234,34 @@ a {
   border-color: #fff;
 }
 
-/* --- Header (light bar so logo navy/orange reads clearly) --- */
+/* --- Header (transparent; solid white on hover or scroll) --- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--header-bg);
+  --header-bar-bg: transparent;
+  --header-bar-text: var(--color-white);
+  --header-bar-text-muted: rgba(255, 255, 255, 0.88);
+  --header-bar-border: rgba(255, 255, 255, 0.28);
+  --header-bar-shadow: none;
+  background: var(--header-bar-bg);
+  backdrop-filter: none;
+  border-bottom: 2px solid var(--header-bar-border);
+  box-shadow: var(--header-bar-shadow);
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    backdrop-filter 0.28s ease;
+}
+
+.site-header:is(:hover, .is-scrolled, .is-menu-open, :focus-within) {
+  --header-bar-bg: var(--header-bg);
+  --header-bar-text: var(--color-navy);
+  --header-bar-text-muted: var(--color-text-muted);
+  --header-bar-border: var(--color-border);
+  --header-bar-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--color-accent);
-  box-shadow: var(--shadow-sm);
 }
 
 .header-inner {
@@ -260,8 +279,9 @@ a {
   align-items: center;
   gap: 0.875rem;
   text-decoration: none;
-  color: var(--header-text);
+  color: var(--header-bar-text);
   min-width: 0;
+  transition: color 0.28s ease;
 }
 
 .brand-logo {
@@ -294,10 +314,11 @@ a {
 
 .brand-tagline {
   font-size: 0.75rem;
-  color: var(--header-text-muted);
+  color: var(--header-bar-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.28s ease;
 }
 
 .site-nav ul {
@@ -310,7 +331,7 @@ a {
 .site-nav a {
   display: block;
   padding: 0.5rem 0.875rem;
-  color: var(--header-text-muted);
+  color: var(--header-bar-text-muted);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -319,8 +340,13 @@ a {
 }
 
 .site-nav a:hover {
-  color: var(--header-text);
+  color: var(--header-bar-text);
   background: var(--color-orange-soft);
+}
+
+.site-header:not(:hover):not(.is-scrolled):not(.is-menu-open):not(:focus-within) .site-nav a.is-active {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .site-nav .nav-cta {
@@ -343,17 +369,18 @@ a {
   height: 2.5rem;
   padding: 0.5rem;
   background: transparent;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--header-bar-border);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: border-color 0.28s ease;
 }
 
 .nav-toggle span {
   display: block;
   height: 2px;
-  background: var(--header-text);
+  background: var(--header-bar-text);
   border-radius: 1px;
-  transition: transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s, background 0.28s ease;
 }
 
 /* --- Hero --- */
@@ -1073,6 +1100,10 @@ a.contact-card:hover {
     display: none;
   }
 
+  .site-header:not(.is-scrolled):not(:hover):not(.is-menu-open) .site-nav.is-open {
+    border-bottom-color: var(--color-border);
+  }
+
   .site-nav.is-open {
     display: block;
   }
@@ -1085,10 +1116,6 @@ a.contact-card:hover {
   .site-nav .nav-cta {
     margin-left: 0;
     text-align: center;
-  }
-
-  .site-header {
-    position: relative;
   }
 
   .header-inner {

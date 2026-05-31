@@ -62,7 +62,7 @@
       "<div class=\"catalog-qty-row\">" +
       "<label class=\"visually-hidden\" for=\"qty-" + item.id + "\">Quantity</label>" +
       "<input type=\"number\" id=\"qty-" + item.id + "\" class=\"catalog-qty\" min=\"1\" value=\"1\" data-product-id=\"" + item.id + "\">" +
-      "<button type=\"button\" class=\"btn btn-primary btn-quote-tyre\" data-product-id=\"" + item.id + "\">Get quote</button>" +
+      "<button type=\"button\" class=\"btn btn-primary btn-quote-tyre\" data-product-id=\"" + item.id + "\">Add to Quote</button>" +
       "</div>" +
       "</div>" +
       "</article>"
@@ -127,7 +127,9 @@
         });
         if (!product || !window.PBC_Quote) return;
         var qtyInput = document.getElementById("qty-" + id);
-        window.PBC_Quote.requestProductQuote(product, qtyInput ? qtyInput.value : 1);
+        window.PBC_Quote.addProduct(product, qtyInput ? qtyInput.value : 1);
+        btn.textContent = 'Added to Quote';
+        setTimeout(function () { btn.textContent = 'Add to Quote'; }, 1200);
       });
     });
   }

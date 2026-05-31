@@ -51,7 +51,7 @@
       '<p class="shop-card-price">' + formatPrice(item.price) + '</p>' +
       '<div class="shop-card-actions">' +
       '<input type="number" class="catalog-qty" min="1" value="1" aria-label="Quantity" data-id="' + item.id + '">' +
-      '<button type="button" class="btn btn-primary btn-sm btn-quote-shop" data-id="' + item.id + '">Get quote</button>' +
+      '<button type="button" class="btn btn-primary btn-sm btn-quote-shop" data-id="' + item.id + '">Add to Quote</button>' +
       '</div></div></article>'
     );
   }
@@ -90,7 +90,9 @@
         var product = window.PBC_Store.getById(id);
         if (!product || !window.PBC_Quote) return;
         var qtyEl = grid.querySelector('.catalog-qty[data-id="' + id + '"]');
-        window.PBC_Quote.requestProductQuote(product, qtyEl ? qtyEl.value : 1);
+        window.PBC_Quote.addProduct(product, qtyEl ? qtyEl.value : 1);
+        btn.textContent = 'Added to Quote';
+        setTimeout(function () { btn.textContent = 'Add to Quote'; }, 1200);
       });
     });
   }

@@ -50,6 +50,79 @@
     });
   }
 
+
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function (char) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[char];
+    });
+  }
+
+  function quotationMessage(items) {
+    if (!window.PBC_Quote) return '';
+    if (!items.length) return '';
+    return window.PBC_Quote.quotationLines(items).join('\n');
+  }
+
+  function fillQuoteForm(items) {
+    var quoteForm = document.getElementById('quote-form');
+    if (!quoteForm || !window.PBC_Quote) return;
+    var count = items.reduce(function (sum, line) { return sum + (line.qty || 0); }, 0);
+    if (quoteForm.elements.category) quoteForm.elements.category.value = items.length ? 'Selected tyres' : '';
+    if (quoteForm.elements.quantity) quoteForm.elements.quantity.value = count || '';
+    if (quoteForm.elements.message) quoteForm.elements.message.value = quotationMessage(items);
+  }
+
+  function renderQuotationPanel() {
+    var root = document.getElementById('quotation-root');
+    if (!root || !window.PBC_Quote) return;
+    var items = window.PBC_Quote.getItems();
+    fillQuoteForm(items);
+    if (!items.length) {
+      root.innerHTML =
+        '<h2>My Quotation</h2>' +
+        '<p class="quote-empty">No tyres added yet. <a href="shop.html">Shop tyres</a> and press <strong>Add to Quote</strong>.</p>';
+      return;
+    }
+    var rows = items.map(function (line) {
+      return (
+        '<article class="quote-line" data-id="' + escapeHtml(line.id) + '">' +
+        '<div class="quote-line-main">' +
+        '<h3>' + escapeHtml((line.catalogName || line.design) + ' ' + line.size) + '</h3>' +
+        '<p>' + escapeHtml(line.brand) + ' · Ply ' + escapeHtml(line.ply) + ' · ' + window.PBC_Quote.formatPrice(line.price) + ' each</p>' +
+        '</div>' +
+        '<label>Qty <input type="number" min="1" value="' + escapeHtml(line.qty) + '" data-quote-qty="' + escapeHtml(line.id) + '"></label>' +
+        '<p class="quote-line-total">' + window.PBC_Quote.formatPrice((line.price || 0) * (line.qty || 1)) + '</p>' +
+        '<button type="button" class="quote-remove" data-quote-remove="' + escapeHtml(line.id) + '">Remove</button>' +
+        '</article>'
+      );
+    }).join('');
+    root.innerHTML =
+      '<div class="quotation-panel-header"><div><p class="eyebrow">Saved tyres</p><h2>My Quotation</h2></div>' +
+      '<button type="button" class="btn btn--on-light btn-secondary" id="quote-clear">Clear all</button></div>' +
+      '<div class="quote-lines">' + rows + '</div>' +
+      '<p class="quote-total"><span>Estimated total</span><strong>' + window.PBC_Quote.formatPrice(window.PBC_Quote.getTotal()) + '</strong></p>';
+
+    root.querySelectorAll('[data-quote-qty]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        window.PBC_Quote.setQty(input.getAttribute('data-quote-qty'), input.value);
+      });
+    });
+    root.querySelectorAll('[data-quote-remove]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        window.PBC_Quote.remove(btn.getAttribute('data-quote-remove'));
+      });
+    });
+    var clear = document.getElementById('quote-clear');
+    if (clear) clear.addEventListener('click', window.PBC_Quote.clear);
+  }
+
   function initQuoteForm() {
     var quoteForm = document.getElementById('quote-form');
     if (!quoteForm) return;
@@ -67,7 +140,7 @@
         data.get('message')
       ];
       if (window.PBC_Quote) {
-        window.PBC_Quote.requestCustomQuote(lines);
+        window.PBC_Quote.sendSavedQuote(lines);
         return;
       }
       var body = encodeURIComponent(lines.join('\n'));
@@ -78,6 +151,8 @@
   function init() {
     injectWhatsAppButton();
     initNav();
+    renderQuotationPanel();
+    window.addEventListener('pbc-quotation-updated', renderQuotationPanel);
     initQuoteForm();
   }
 

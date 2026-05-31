@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tyre Details | PBC</title>
-  <link rel="stylesheet" href="styles.css?v=20260531-whatsapp-only1">
+  <link rel="stylesheet" href="styles.css?v=20260531-quotation-basket1">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="section"><div class="container" id="product-root"><p>Loading…</p></div></main>
-  <script src="js/price-lists.js?v=20260531-whatsapp-only1"></script>
-  <script src="js/catalog.js?v=20260531-whatsapp-only1"></script>
-  <script src="js/store.js?v=20260531-whatsapp-only1"></script>
-  <script src="js/quote-actions.js?v=20260531-whatsapp-only1"></script>
+  <script src="js/price-lists.js?v=20260531-quotation-basket1"></script>
+  <script src="js/catalog.js?v=20260531-quotation-basket1"></script>
+  <script src="js/store.js?v=20260531-quotation-basket1"></script>
+  <script src="js/quote-actions.js?v=20260531-quotation-basket1"></script>
   <script>
     (function () {
       var id = new URLSearchParams(location.search).get("id");
@@ -53,13 +53,16 @@
         features +
         "<p class=\"shop-card-price\" style=\"font-size:1.5rem\">" + window.PBC_Quote.formatPrice(p.price) + "</p>" +
         "<input type=\"number\" id=\"pqty\" min=\"1\" value=\"1\" class=\"catalog-qty\"> " +
-        "<button class=\"btn btn-primary\" id=\"pquote\">Get quote on WhatsApp</button></article>";
+        "<button class=\"btn btn-primary\" id=\"pquote\">Add to Quote</button> " +
+        "<a class=\"btn btn--on-light btn-secondary\" href=\"quote.html\">My Quotation</a></article>";
       document.getElementById("pquote").onclick = function () {
-        window.PBC_Quote.requestProductQuote(p, document.getElementById("pqty").value);
+        window.PBC_Quote.addProduct(p, document.getElementById("pqty").value);
+        document.getElementById("pquote").textContent = "Added to Quote";
+        setTimeout(function () { document.getElementById("pquote").textContent = "Add to Quote"; }, 1200);
       };
     })();
   </script>
-  <script src="js/image-zoom.js?v=20260531-whatsapp-only1"></script>
-  <script src="js/site.js?v=20260531-whatsapp-only1"></script>
+  <script src="js/image-zoom.js?v=20260531-quotation-basket1"></script>
+  <script src="js/site.js?v=20260531-quotation-basket1"></script>
 </body>
 </html>

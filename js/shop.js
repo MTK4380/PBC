@@ -23,10 +23,13 @@
   }
 
   function renderImage(item) {
+    var alt = item.imageAlt || item.design + ' tyre';
     if (item.image) {
       return (
         '<div class="shop-card-img shop-card-img--' + item.vehicle + '">' +
-        '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || item.design + ' tyre') + '" loading="lazy">' +
+        '<button type="button" class="tyre-image-zoom js-image-zoom" data-zoom-src="' + escapeHtml(item.image) + '" data-zoom-alt="' + escapeHtml(alt) + '" aria-label="View larger image of ' + escapeHtml(alt) + '">' +
+        '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(alt) + '" loading="lazy">' +
+        '</button>' +
         '</div>'
       );
     }

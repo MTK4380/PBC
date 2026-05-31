@@ -36,8 +36,9 @@
     var title = item.catalogName || item.design;
     var mediaStyle = "min-height:6.75rem;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0.5rem;";
     var imageStyle = "display:block;width:auto;height:7rem;max-width:100%;max-height:7rem;object-fit:contain;";
+    var imageAlt = item.imageAlt || title + " tyre";
     var image = item.image
-      ? "<div class=\"catalog-product-media\" style=\"" + mediaStyle + "\"><img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(item.imageAlt || title + " tyre") + "\" loading=\"lazy\" style=\"" + imageStyle + "\"></div>"
+      ? "<div class=\"catalog-product-media\" style=\"" + mediaStyle + "\"><button type=\"button\" class=\"tyre-image-zoom js-image-zoom\" data-zoom-src=\"" + escapeHtml(item.image) + "\" data-zoom-alt=\"" + escapeHtml(imageAlt) + "\" aria-label=\"View larger image of " + escapeHtml(imageAlt) + "\"><img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(imageAlt) + "\" loading=\"lazy\" style=\"" + imageStyle + "\"></button></div>"
       : "<div class=\"catalog-product-media catalog-product-media--placeholder\" aria-hidden=\"true\" style=\"" + mediaStyle + "\"></div>";
     var summary = item.summary ? "<p class=\"catalog-product-summary\">" + escapeHtml(item.summary) + "</p>" : "";
     var features = item.features && item.features.length

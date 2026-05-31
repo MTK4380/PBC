@@ -754,6 +754,90 @@ a.contact-card:hover {
 }
 
 /* --- Responsive --- */
+
+
+.tyre-image-zoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.tyre-image-zoom:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.tyre-lightbox-open {
+  overflow: hidden;
+}
+
+.tyre-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(0, 12, 24, 0.82);
+}
+
+.tyre-lightbox[hidden] {
+  display: none;
+}
+
+.tyre-lightbox-panel {
+  position: relative;
+  width: min(92vw, 900px);
+  max-height: 92vh;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.tyre-lightbox-img {
+  width: 100%;
+  max-height: min(74vh, 760px);
+  object-fit: contain;
+}
+
+.tyre-lightbox-caption {
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.tyre-lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-navy);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.tyre-lightbox-close:hover,
+.tyre-lightbox-close:focus-visible {
+  background: var(--color-accent);
+}
+
 @media (max-width: 900px) {
   .trust-grid,
   .product-grid,

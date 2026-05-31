@@ -70,7 +70,7 @@
         lines.push("", "Subtotal: " + window.PBC_Cart.formatPrice(window.PBC_Cart.getSubtotal()));
         var body = encodeURIComponent("Cart items:\n\n" + lines.join("\n") + "\n\nPlease provide delivery details and contact information.");
         var subject = encodeURIComponent("Cart quote request — Pneumatic Business Consultants");
-        window.location.href = "mailto:info@pneumaticconsultants.com?subject=" + subject + "&body=" + body;
+        window.location.href = "mailto:pbconsultants2017@gmail.com?subject=" + subject + "&body=" + body;
       });
     }
   }

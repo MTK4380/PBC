@@ -25,8 +25,8 @@ window.PBC_CONFIG = {
     password: "pbcadmin"
   },
   contact: {
-    phone: "+92 300 123 4567",
-    email: "info@pneumaticconsultants.com",
-    whatsapp: "923001234567"
+    phone: "+92 336 516 3615",
+    email: "pbconsultants2017@gmail.com",
+    whatsapp: "923365163615"
   }
 };

@@ -44,7 +44,7 @@
       ];
       var subject = encodeURIComponent('Quote request — Pneumatic Business Consultants');
       var body = encodeURIComponent(lines.join('\n'));
-      window.location.href = 'mailto:info@pneumaticconsultants.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:pbconsultants2017@gmail.com?subject=' + subject + '&body=' + body;
     });
   }
 })();

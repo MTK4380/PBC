@@ -23,14 +23,16 @@
   }
 
   function renderImage(item) {
+    var frameStyle = "height:8.5rem;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0.75rem;";
+    var imageStyle = "display:block;width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain;";
     if (item.image) {
       return (
-        "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\">" +
-        "<img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(item.imageAlt || item.design + " tyre") + "\" loading=\"lazy\">" +
+        "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" style=\"" + frameStyle + "\">" +
+        "<img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(item.imageAlt || item.design + " tyre") + "\" loading=\"lazy\" style=\"" + imageStyle + "\">" +
         "</div>"
       );
     }
-    return "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" role=\"img\" aria-label=\"" + escapeHtml(item.size + " " + item.design) + "\"></div>";
+    return "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" role=\"img\" aria-label=\"" + escapeHtml(item.size + " " + item.design) + "\" style=\"" + frameStyle + "\"></div>";
   }
 
   function renderCard(item) {

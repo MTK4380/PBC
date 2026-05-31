@@ -505,12 +505,6 @@ a {
     url("images/truck-tyres.jpg");
 }
 
-.product-visual--bike {
-  background-image:
-    linear-gradient(160deg, var(--color-navy-light) 0%, var(--color-navy-mid) 50%, var(--color-black) 100%),
-    url("images/bike-tyres.jpg");
-}
-
 .product-body {
   padding: 1.5rem;
 }

@@ -19,14 +19,13 @@ window.PBC_CONFIG = {
   jazzCash: {
     enabled: true,
     merchantNumber: "03XX-XXXXXXX",
-    note: "Payment details will be confirmed after the WhatsApp/email quote."
+    note: "Payment details will be confirmed after the WhatsApp quote."
   },
   admin: {
     password: "pbcadmin"
   },
   contact: {
     phone: "+92 336 516 3615",
-    email: "pbconsultants2017@gmail.com",
     whatsapp: "923365163615"
   }
 };

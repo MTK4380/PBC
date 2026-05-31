@@ -1,6 +1,5 @@
 (function () {
   var DEFAULT_WHATSAPP = '923365163615';
-  var DEFAULT_EMAIL = 'pbconsultants2017@gmail.com';
 
   function configContact() {
     return (window.PBC_CONFIG && window.PBC_CONFIG.contact) || {};
@@ -8,10 +7,6 @@
 
   function whatsappNumber() {
     return String(configContact().whatsapp || DEFAULT_WHATSAPP).replace(/\D/g, '');
-  }
-
-  function emailAddress() {
-    return configContact().email || DEFAULT_EMAIL;
   }
 
   function formatPrice(amount) {
@@ -27,16 +22,9 @@
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
-  function openEmail(subject, body) {
-    window.location.href = 'mailto:' + emailAddress() + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  }
-
-  function sendQuote(subject, lines) {
+  function sendQuote(lines) {
     var body = lines.filter(function (line) { return line !== null && line !== undefined; }).join('\n');
     openWhatsApp(body);
-    window.setTimeout(function () {
-      openEmail(subject, body);
-    }, 150);
   }
 
   function productLines(product, qty) {
@@ -63,10 +51,10 @@
     formatPrice: formatPrice,
     sendQuote: sendQuote,
     requestProductQuote: function (product, qty) {
-      sendQuote('Tyre quote request — ' + (product.catalogName || product.design || product.size || 'PBC'), productLines(product, qty));
+      sendQuote(productLines(product, qty));
     },
     requestCustomQuote: function (lines) {
-      sendQuote('Quote request — Pneumatic Business Consultants', lines);
+      sendQuote(lines);
     }
   };
 })();

@@ -60,7 +60,6 @@
         'Name: ' + data.get('name'),
         'Company: ' + data.get('company'),
         'Phone: ' + data.get('phone'),
-        'Email: ' + data.get('email'),
         'Tyre category: ' + data.get('category'),
         'Quantity: ' + data.get('quantity'),
         '',
@@ -71,10 +70,8 @@
         window.PBC_Quote.requestCustomQuote(lines);
         return;
       }
-      var subject = encodeURIComponent('Quote request — Pneumatic Business Consultants');
       var body = encodeURIComponent(lines.join('\n'));
       window.open('https://wa.me/' + getWhatsAppNumber() + '?text=' + body, '_blank', 'noopener,noreferrer');
-      window.location.href = 'mailto:pbconsultants2017@gmail.com?subject=' + subject + '&body=' + body;
     });
   }
 

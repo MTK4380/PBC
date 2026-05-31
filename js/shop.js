@@ -24,11 +24,12 @@
 
   function renderImage(item) {
     var alt = item.imageAlt || item.design + ' tyre';
+    var imageUrl = item.image ? item.image + '?v=20260531-imgfix1' : '';
     if (item.image) {
       return (
         '<div class="shop-card-img shop-card-img--' + item.vehicle + '">' +
-        '<button type="button" class="tyre-image-zoom js-image-zoom" data-zoom-src="' + escapeHtml(item.image) + '" data-zoom-alt="' + escapeHtml(alt) + '" aria-label="View larger image of ' + escapeHtml(alt) + '">' +
-        '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(alt) + '" loading="lazy">' +
+        '<button type="button" class="tyre-image-zoom js-image-zoom" data-zoom-src="' + escapeHtml(imageUrl) + '" data-zoom-alt="' + escapeHtml(alt) + '" aria-label="View larger image of ' + escapeHtml(alt) + '">' +
+        '<img src="' + escapeHtml(imageUrl) + '" alt="' + escapeHtml(alt) + '" loading="lazy">' +
         '</button>' +
         '</div>'
       );

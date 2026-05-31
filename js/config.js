@@ -19,7 +19,7 @@ window.PBC_CONFIG = {
   jazzCash: {
     enabled: true,
     merchantNumber: "03XX-XXXXXXX",
-    note: "Send payment to JazzCash merchant account and enter transaction ID at checkout."
+    note: "Payment details will be confirmed after the WhatsApp/email quote."
   },
   admin: {
     password: "pbcadmin"

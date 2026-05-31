@@ -1296,29 +1296,8 @@ a.contact-card:hover {
 }
 
 /* --- Cart nav --- */
-.nav-cart {
-  position: relative;
-}
 
-.cart-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.25rem;
-  height: 1.25rem;
-  padding: 0 0.35rem;
-  margin-left: 0.35rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  background: var(--color-white);
-  color: var(--color-navy);
-  border-radius: 999px;
-}
 
-.site-nav .nav-cart.is-active .cart-badge {
-  background: var(--color-navy);
-  color: var(--color-white);
-}
 
 /* --- Tyre categories + catalog --- */
 .category-top-grid {
@@ -1555,9 +1534,6 @@ a.contact-card:hover {
   border-radius: var(--radius);
 }
 
-.btn-add-cart {
-  white-space: nowrap;
-}
 
 /* --- Cart page --- */
 .cart-empty {
@@ -1986,9 +1962,6 @@ a.contact-card:hover {
   align-items: center;
 }
 
-.shop-card-actions .btn-add-shop {
-  flex: 1;
-}
 
 .shop-card-actions .catalog-qty {
   width: 3.5rem;
@@ -2004,25 +1977,8 @@ a.contact-card:hover {
   color: var(--color-text-muted);
 }
 
-.checkout-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
-}
 
-.checkout-totals {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.5rem 0;
-}
 
-.checkout-totals--grand {
-  font-size: 1.125rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 2px solid var(--color-border);
-}
 
 .payment-option {
   display: flex;
@@ -2080,8 +2036,7 @@ a.contact-card:hover {
 }
 
 @media (max-width: 900px) {
-  .shop-layout,
-  .checkout-layout {
+  .shop-layout {
     grid-template-columns: 1fr;
   }
 

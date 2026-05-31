@@ -7,7 +7,7 @@
   var opts = window.PBC_Store.getFilterOptions();
 
   function formatPrice(n) {
-    return window.PBC_Cart.formatPrice(n);
+    return window.PBC_Quote ? window.PBC_Quote.formatPrice(n) : new Intl.NumberFormat('en-PK', { style: 'currency', currency: 'PKR', maximumFractionDigits: 0 }).format(n || 0);
   }
 
   function escapeHtml(value) {
@@ -51,7 +51,7 @@
       '<p class="shop-card-price">' + formatPrice(item.price) + '</p>' +
       '<div class="shop-card-actions">' +
       '<input type="number" class="catalog-qty" min="1" value="1" aria-label="Quantity" data-id="' + item.id + '">' +
-      '<button type="button" class="btn btn-primary btn-sm btn-add-shop" data-id="' + item.id + '">Add to cart</button>' +
+      '<button type="button" class="btn btn-primary btn-sm btn-quote-shop" data-id="' + item.id + '">Get quote</button>' +
       '</div></div></article>'
     );
   }
@@ -84,15 +84,13 @@
   }
 
   function bindCardActions(items) {
-    grid.querySelectorAll(".btn-add-shop").forEach(function (btn) {
+    grid.querySelectorAll(".btn-quote-shop").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var id = btn.getAttribute("data-id");
         var product = window.PBC_Store.getById(id);
-        if (!product) return;
-        var qtyEl = grid.querySelector(".catalog-qty[data-id=\"" + id + "\"]");
-        window.PBC_Cart.add(product, qtyEl ? qtyEl.value : 1);
-        btn.textContent = "Added";
-        setTimeout(function () { btn.textContent = "Add to cart"; }, 1000);
+        if (!product || !window.PBC_Quote) return;
+        var qtyEl = grid.querySelector('.catalog-qty[data-id="' + id + '"]');
+        window.PBC_Quote.requestProductQuote(product, qtyEl ? qtyEl.value : 1);
       });
     });
   }

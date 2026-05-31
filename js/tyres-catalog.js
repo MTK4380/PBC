@@ -1,5 +1,5 @@
 (function () {
-  var formatter = window.PBC_Cart ? window.PBC_Cart.formatPrice : function (n) {
+  var formatter = window.PBC_Quote ? window.PBC_Quote.formatPrice : function (n) {
     return "PKR " + n;
   };
 
@@ -62,7 +62,7 @@
       "<div class=\"catalog-qty-row\">" +
       "<label class=\"visually-hidden\" for=\"qty-" + item.id + "\">Quantity</label>" +
       "<input type=\"number\" id=\"qty-" + item.id + "\" class=\"catalog-qty\" min=\"1\" value=\"1\" data-product-id=\"" + item.id + "\">" +
-      "<button type=\"button\" class=\"btn btn-primary btn-add-cart\" data-product-id=\"" + item.id + "\">Add to cart</button>" +
+      "<button type=\"button\" class=\"btn btn-primary btn-quote-tyre\" data-product-id=\"" + item.id + "\">Get quote</button>" +
       "</div>" +
       "</div>" +
       "</article>"
@@ -119,20 +119,15 @@
     searchInput.addEventListener("search", applySearch);
     searchInput.addEventListener("keyup", applySearch);
 
-    root.querySelectorAll(".btn-add-cart").forEach(function (btn) {
+    root.querySelectorAll(".btn-quote-tyre").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var id = btn.getAttribute("data-product-id");
         var product = items.find(function (p) {
           return p.id === id;
         });
-        if (!product) return;
+        if (!product || !window.PBC_Quote) return;
         var qtyInput = document.getElementById("qty-" + id);
-        var qty = qtyInput ? qtyInput.value : 1;
-        window.PBC_Cart.add(product, qty);
-        btn.textContent = "Added";
-        setTimeout(function () {
-          btn.textContent = "Add to cart";
-        }, 1200);
+        window.PBC_Quote.requestProductQuote(product, qtyInput ? qtyInput.value : 1);
       });
     });
   }

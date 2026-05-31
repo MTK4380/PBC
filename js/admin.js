@@ -26,7 +26,7 @@
     }
     table.innerHTML = "<table class=\"price-table\"><thead><tr><th>Size</th><th>Design</th><th>Price</th><th></th></tr></thead><tbody>" +
       items.map(function (p) {
-        return "<tr><td>" + p.size + "</td><td>" + p.design + "</td><td>" + window.PBC_Cart.formatPrice(p.price) + "</td><td><button type=\"button\" class=\"cart-remove\" data-del=\"" + p.id + "\">Delete</button></td></tr>";
+        return "<tr><td>" + p.size + "</td><td>" + p.design + "</td><td>" + (window.PBC_Quote ? window.PBC_Quote.formatPrice(p.price) : "PKR " + p.price) + "</td><td><button type=\"button\" class=\"cart-remove\" data-del=\"" + p.id + "\">Delete</button></td></tr>";
       }).join("") + "</tbody></table>";
     table.querySelectorAll("[data-del]").forEach(function (btn) {
       btn.addEventListener("click", function () {

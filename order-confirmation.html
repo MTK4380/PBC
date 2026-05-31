@@ -3,29 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmed | PBC</title>
-  <link rel="stylesheet" href="styles.css?v=20260531-whatsapp-price1">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="refresh" content="0; url=quote.html">
+  <title>Request a tyre quote</title>
+  <link rel="stylesheet" href="styles.css?v=20260531-whatsapp-flow1">
 </head>
 <body>
   <main class="section">
-    <div class="container" style="max-width:36rem;text-align:center">
-      <h1>Thank you for your order</h1>
-      <p id="order-msg">Your order has been received.</p>
-      <div class="page-actions page-actions--center">
-        <a href="shop.html" class="btn btn-primary">Continue shopping</a>
-        <a href="index.html" class="btn btn--on-light btn-secondary">Home</a>
-      </div>
+    <div class="container">
+      <h1>Request a tyre quote</h1>
+      <p>Orders are now handled by quotation over WhatsApp and email. <a href="quote.html">Request a tyre quote</a>.</p>
     </div>
   </main>
-  <script>
-    try {
-      var o = JSON.parse(sessionStorage.getItem("pbc-last-order") || "{}");
-      if (o.id) {
-        document.getElementById("order-msg").textContent =
-          "Order " + o.id + " placed successfully. We will contact you at " + (o.customer && o.customer.phone) + " to confirm delivery and payment.";
-      }
-    } catch (e) {}
-  </script>
-  <script src="js/site.js?v=20260531-whatsapp-price1"></script>
+  <script>location.replace('quote.html');</script>
+  <script src="js/quote-actions.js?v=20260531-whatsapp-flow1"></script>
+  <script src="js/site.js?v=20260531-whatsapp-flow1"></script>
 </body>
 </html>

@@ -10,15 +10,41 @@
     return window.PBC_Cart.formatPrice(n);
   }
 
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (char) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char];
+    });
+  }
+
+  function renderImage(item) {
+    if (item.image) {
+      return (
+        "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\">" +
+        "<img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(item.imageAlt || item.design + " tyre") + "\" loading=\"lazy\">" +
+        "</div>"
+      );
+    }
+    return "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" role=\"img\" aria-label=\"" + escapeHtml(item.size + " " + item.design) + "\"></div>";
+  }
+
   function renderCard(item) {
     var vehicleLabel = item.vehicle === "car" ? "Car" : "Truck";
+    var title = item.catalogName || item.design;
+    var summary = item.summary ? "<p class=\"shop-card-summary\">" + escapeHtml(item.summary) + "</p>" : "";
     return (
       "<article class=\"shop-card\" data-id=\"" + item.id + "\">" +
-      "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" role=\"img\" aria-label=\"" + item.size + " " + item.design + "\"></div>" +
+      renderImage(item) +
       "<div class=\"shop-card-body\">" +
-      "<p class=\"shop-card-meta\">" + item.brand + " · " + vehicleLabel + "</p>" +
-      "<h3 class=\"shop-card-title\"><a href=\"product.html?id=" + encodeURIComponent(item.id) + "\">" + item.size + "</a></h3>" +
-      "<p class=\"shop-card-design\">" + item.design + " · Ply " + item.ply + "</p>" +
+      "<p class=\"shop-card-meta\">" + escapeHtml(item.brand) + " · " + escapeHtml(item.catalogCategory || vehicleLabel) + "</p>" +
+      "<h3 class=\"shop-card-title\"><a href=\"product.html?id=" + encodeURIComponent(item.id) + "\">" + escapeHtml(title) + "</a></h3>" +
+      "<p class=\"shop-card-design\">" + escapeHtml(item.size) + " · Ply " + escapeHtml(item.ply) + "</p>" +
+      summary +
       "<p class=\"shop-card-price\">" + formatPrice(item.price) + "</p>" +
       "<div class=\"shop-card-actions\">" +
       "<input type=\"number\" class=\"catalog-qty\" min=\"1\" value=\"1\" aria-label=\"Quantity\" data-id=\"" + item.id + "\">" +

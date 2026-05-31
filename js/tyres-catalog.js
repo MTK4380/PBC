@@ -5,24 +5,53 @@
 
   var titles = { car: "Car tyres", truck: "Truck tyres" };
 
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (char) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char];
+    });
+  }
+
   function searchText(item) {
     return [
       item.brand,
       item.category,
+      item.catalogName,
+      item.catalogCategory,
       item.size,
       item.design,
+      item.summary,
+      (item.features || []).join(" "),
       String(item.ply),
       String(item.price)
     ].join(" ").toLowerCase();
   }
 
   function renderProduct(item) {
+    var title = item.catalogName || item.design;
+    var image = item.image
+      ? "<div class=\"catalog-product-media\"><img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(item.imageAlt || title + " tyre") + "\" loading=\"lazy\"></div>"
+      : "<div class=\"catalog-product-media catalog-product-media--placeholder\" aria-hidden=\"true\"></div>";
+    var summary = item.summary ? "<p class=\"catalog-product-summary\">" + escapeHtml(item.summary) + "</p>" : "";
+    var features = item.features && item.features.length
+      ? "<ul class=\"catalog-product-features\">" + item.features.slice(0, 3).map(function (feature) {
+        return "<li>" + escapeHtml(feature) + "</li>";
+      }).join("") + "</ul>"
+      : "";
     return (
-      "<article class=\"catalog-product\" data-id=\"" + item.id + "\" data-search=\"" + searchText(item).replace(/"/g, "") + "\">" +
+      "<article class=\"catalog-product\" data-id=\"" + item.id + "\" data-search=\"" + escapeHtml(searchText(item)).replace(/"/g, "") + "\">" +
+      image +
       "<div class=\"catalog-product-info\">" +
-      "<p class=\"catalog-product-meta\"><span class=\"catalog-brand\">" + item.brand + "</span> · " + item.category + "</p>" +
-      "<h3 class=\"catalog-product-title\">" + item.size + " — " + item.design + "</h3>" +
-      "<p class=\"catalog-product-spec\">Ply " + item.ply + "</p>" +
+      "<p class=\"catalog-product-meta\"><span class=\"catalog-brand\">" + escapeHtml(item.brand) + "</span> · " + escapeHtml(item.catalogCategory || item.category) + "</p>" +
+      "<h3 class=\"catalog-product-title\">" + escapeHtml(title) + "</h3>" +
+      "<p class=\"catalog-product-spec\">" + escapeHtml(item.size) + " · Ply " + escapeHtml(item.ply) + "</p>" +
+      summary +
+      features +
       "</div>" +
       "<div class=\"catalog-product-actions\">" +
       "<p class=\"catalog-product-price\">" + formatter(item.price) + "</p>" +

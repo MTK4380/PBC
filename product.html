@@ -19,12 +19,36 @@
       var p = window.PBC_Store && window.PBC_Store.getById(id);
       var root = document.getElementById("product-root");
       if (!p) { root.innerHTML = "<p>Product not found. <a href=\"shop.html\">Back to shop</a></p>"; return; }
-      document.title = p.size + " " + p.design + " | PBC";
+      function escapeHtml(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            "\"": "&quot;",
+            "'": "&#39;"
+          }[char];
+        });
+      }
+      var title = p.catalogName || p.design;
+      var image = p.image
+        ? "<div class=\"product-detail-media\"><img src=\"" + escapeHtml(p.image) + "\" alt=\"" + escapeHtml(p.imageAlt || title + " tyre") + "\" loading=\"eager\"></div>"
+        : "<div class=\"shop-card-img shop-card-img--" + p.vehicle + "\"></div>";
+      var summary = p.summary ? "<p class=\"product-detail-summary\">" + escapeHtml(p.summary) + "</p>" : "";
+      var features = p.features && p.features.length
+        ? "<ul class=\"product-detail-features\">" + p.features.map(function (feature) {
+          return "<li>" + escapeHtml(feature) + "</li>";
+        }).join("") + "</ul>"
+        : "";
+      document.title = title + " " + p.size + " | PBC";
       root.innerHTML =
         "<nav class=\"category-switcher\"><a href=\"shop.html\">← Shop</a></nav>" +
         "<article class=\"product-detail\">" +
-        "<div class=\"shop-card-img shop-card-img--" + p.vehicle + "\"></div>" +
-        "<h1>" + p.size + "</h1><p>" + p.brand + " · " + p.design + " · Ply " + p.ply + "</p>" +
+        image +
+        "<h1>" + escapeHtml(title) + "</h1><p>" + escapeHtml(p.brand) + " · " + escapeHtml(p.catalogCategory || p.category) + "</p>" +
+        "<p class=\"product-detail-spec\">" + escapeHtml(p.size) + " · Ply " + escapeHtml(p.ply) + "</p>" +
+        summary +
+        features +
         "<p class=\"shop-card-price\" style=\"font-size:1.5rem\">" + window.PBC_Cart.formatPrice(p.price) + "</p>" +
         "<input type=\"number\" id=\"pqty\" min=\"1\" value=\"1\" class=\"catalog-qty\"> " +
         "<button class=\"btn btn-primary\" id=\"padd\">Add to cart</button></article>";

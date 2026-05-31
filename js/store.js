@@ -40,6 +40,10 @@
         item.category,
         item.size,
         item.design,
+        item.catalogName,
+        item.catalogCategory,
+        item.summary,
+        (item.features || []).join(" "),
         item.ply,
         item.vehicle,
         item.price

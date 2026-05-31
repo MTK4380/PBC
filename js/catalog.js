@@ -398,6 +398,7 @@
     "ap-plus": "agri-power",
     "ag": "agri-gold",
     "pl": "power-lug",
+    "plp": "plp",
     "spl": "super-power-lug",
     "power-gold": "power-lug"
   };

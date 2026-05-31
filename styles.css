@@ -27,13 +27,13 @@
   --shadow-md: 0 4px 24px rgba(0, 26, 46, 0.12);
   --shadow-lg: 0 12px 40px rgba(0, 26, 46, 0.16);
   --gradient-hero: linear-gradient(
-    165deg,
-    rgba(0, 26, 46, 0.88) 0%,
-    rgba(13, 40, 68, 0.82) 45%,
-    rgba(0, 0, 0, 0.9) 100%
+    105deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.35) 42%,
+    rgba(0, 0, 0, 0.55) 100%
   );
-  --hero-bg-image: url("images/tyres-banner.webp");
-  --hero-bg-image-fallback: url("images/tyres-banner.jpg");
+  --hero-bg-image: url("images/pbc-site-background.webp");
+  --hero-bg-image-fallback: url("images/pbc-site-background.jpg");
   --gradient-navy: linear-gradient(
     160deg,
     var(--color-navy-light) 0%,
@@ -68,20 +68,17 @@ body {
   line-height: 1.65;
   color: var(--color-text);
   background-color: var(--color-bg);
-  background-image:
-    linear-gradient(rgba(242, 245, 248, 0.97), rgba(242, 245, 248, 0.97)),
-    var(--hero-bg-image-fallback);
+  background-image: var(--hero-bg-image-fallback);
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 
-@supports (background-image: url("images/tyres-banner.webp")) {
+@supports (background-image: url("images/pbc-site-background.webp")) {
   body {
-    background-image:
-      linear-gradient(rgba(242, 245, 248, 0.97), rgba(242, 245, 248, 0.97)),
-      var(--hero-bg-image);
+    background-image: var(--hero-bg-image);
   }
 }
 
@@ -140,10 +137,11 @@ a {
 
 .section {
   padding: 5rem 0;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .section--alt {
-  background: var(--color-surface);
+  background: rgba(255, 255, 255, 0.97);
   border-block: 1px solid var(--color-border);
 }
 
@@ -373,7 +371,7 @@ a {
   background-repeat: no-repeat;
 }
 
-@supports (background-image: url("images/tyres-banner.webp")) {
+@supports (background-image: url("images/pbc-site-background.webp")) {
   .hero {
     background-image:
       var(--gradient-hero),
@@ -1149,7 +1147,7 @@ a.contact-card:hover {
   border-bottom: 2px solid var(--color-accent);
 }
 
-@supports (background-image: url("images/tyres-banner.webp")) {
+@supports (background-image: url("images/pbc-site-background.webp")) {
   .page-hero {
     background-image:
       var(--gradient-hero),
@@ -1203,6 +1201,7 @@ a.contact-card:hover {
 /* --- Quick links (home) --- */
 .quick-links {
   padding: 4rem 0 5rem;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .quick-links-grid {
@@ -1430,7 +1429,7 @@ a.contact-card:hover {
 
 .seo-links {
   padding: 2.5rem 0 3.5rem;
-  background: var(--color-bg);
+  background: rgba(255, 255, 255, 0.94);
   border-top: 1px solid var(--color-border);
 }
 

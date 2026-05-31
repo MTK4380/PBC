@@ -23,35 +23,32 @@
   }
 
   function renderImage(item) {
-    var frameStyle = "height:8.5rem;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0.75rem;";
-    var imageStyle = "display:block;width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain;";
     if (item.image) {
       return (
-        "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" style=\"" + frameStyle + "\">" +
-        "<img src=\"" + escapeHtml(item.image) + "\" alt=\"" + escapeHtml(item.imageAlt || item.design + " tyre") + "\" loading=\"lazy\" style=\"" + imageStyle + "\">" +
-        "</div>"
+        '<div class="shop-card-img shop-card-img--' + item.vehicle + '">' +
+        '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || item.design + ' tyre') + '" loading="lazy">' +
+        '</div>'
       );
     }
-    return "<div class=\"shop-card-img shop-card-img--" + item.vehicle + "\" role=\"img\" aria-label=\"" + escapeHtml(item.size + " " + item.design) + "\" style=\"" + frameStyle + "\"></div>";
+    return '<div class="shop-card-img shop-card-img--' + item.vehicle + '" role="img" aria-label="' + escapeHtml(item.size + ' ' + item.design) + '"></div>';
   }
 
   function renderCard(item) {
-    var vehicleLabel = item.vehicle === "car" ? "Car" : "Truck";
     var title = item.catalogName || item.design;
-    var summary = item.summary ? "<p class=\"shop-card-summary\">" + escapeHtml(item.summary) + "</p>" : "";
+    var summary = item.summary ? '<p class="shop-card-summary">' + escapeHtml(item.summary) + '</p>' : '';
     return (
-      "<article class=\"shop-card\" data-id=\"" + item.id + "\">" +
+      '<article class="shop-card" data-id="' + item.id + '">' +
       renderImage(item) +
-      "<div class=\"shop-card-body\">" +
-      "<p class=\"shop-card-meta\">" + escapeHtml(item.brand) + " · " + escapeHtml(item.catalogCategory || vehicleLabel) + "</p>" +
-      "<h3 class=\"shop-card-title\"><a href=\"product.html?id=" + encodeURIComponent(item.id) + "\">" + escapeHtml(title) + "</a></h3>" +
-      "<p class=\"shop-card-design\">" + escapeHtml(item.size) + " · Ply " + escapeHtml(item.ply) + "</p>" +
+      '<div class="shop-card-body">' +
+      '<p class="shop-card-meta">Tyres</p>' +
+      '<h3 class="shop-card-title"><a href="product.html?id=' + encodeURIComponent(item.id) + '">' + escapeHtml(title + ' ' + item.size) + '</a></h3>' +
+      '<p class="shop-card-design">' + escapeHtml(item.brand) + ' · Ply ' + escapeHtml(item.ply) + '</p>' +
       summary +
-      "<p class=\"shop-card-price\">" + formatPrice(item.price) + "</p>" +
-      "<div class=\"shop-card-actions\">" +
-      "<input type=\"number\" class=\"catalog-qty\" min=\"1\" value=\"1\" aria-label=\"Quantity\" data-id=\"" + item.id + "\">" +
-      "<button type=\"button\" class=\"btn btn-primary btn-sm btn-add-shop\" data-id=\"" + item.id + "\">Add to cart</button>" +
-      "</div></div></article>"
+      '<p class="shop-card-price">' + formatPrice(item.price) + '</p>' +
+      '<div class="shop-card-actions">' +
+      '<input type="number" class="catalog-qty" min="1" value="1" aria-label="Quantity" data-id="' + item.id + '">' +
+      '<button type="button" class="btn btn-primary btn-sm btn-add-shop" data-id="' + item.id + '">Add to cart</button>' +
+      '</div></div></article>'
     );
   }
 

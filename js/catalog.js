@@ -381,6 +381,7 @@
     "xp-2000": "xp-2000-ii",
     "bg-velo-trak-plus": "bg-velotrak-plus",
     "bg-velotrak-plus": "bg-velotrak-plus",
+    "bg-power-terrain-a-t": "bg-power-terrain",
     "tr": "traction-rib-tr",
     "super-tiger-set": "super-tiger",
     "load-star-set": "load-star",

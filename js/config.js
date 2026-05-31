@@ -27,5 +27,9 @@ window.PBC_CONFIG = {
   contact: {
     phone: "+92 336 516 3615",
     whatsapp: "923365163615"
+  },
+  registration: {
+    ntn: "7973858-2",
+    strn: "3277876147789"
   }
 };

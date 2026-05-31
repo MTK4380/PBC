@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tyre Details | PBC</title>
-  <link rel="stylesheet" href="styles.css?v=20260531-header-sm1">
+  <link rel="stylesheet" href="styles.css?v=20260531-shop-img1">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -32,7 +32,7 @@
       }
       var title = p.catalogName || p.design;
       var imageAlt = p.imageAlt || title + " tyre";
-      var imageUrl = p.image ? p.image + "?v=20260531-plp-imgfix1" : "";
+      var imageUrl = p.image ? p.image + "?v=20260531-plp-imgfix2" : "";
       var image = p.image
         ? '<div class="product-detail-media"><button type="button" class="tyre-image-zoom js-image-zoom" data-zoom-src="' + escapeHtml(imageUrl) + '" data-zoom-alt="' + escapeHtml(imageAlt) + '" aria-label="View larger image of ' + escapeHtml(imageAlt) + '"><img src="' + escapeHtml(imageUrl) + '" alt="' + escapeHtml(imageAlt) + '" loading="eager"></button></div>'
         : '<div class="shop-card-img shop-card-img--' + p.vehicle + '"></div>';

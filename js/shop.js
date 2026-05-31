@@ -24,7 +24,7 @@
 
   function renderImage(item) {
     var alt = item.imageAlt || item.design + ' tyre';
-    var imageUrl = item.image ? item.image + '?v=20260531-plp-imgfix1' : '';
+    var imageUrl = item.image ? item.image + '?v=20260531-plp-imgfix2' : '';
     if (item.image) {
       return (
         '<div class="shop-card-img shop-card-img--' + item.vehicle + '">' +

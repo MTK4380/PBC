@@ -368,7 +368,7 @@
     "plp": {
       name: "PLP",
       category: "Tractor Rear Tyre",
-      image: "images/tyres/gtr-plp.webp",
+      image: "images/tyres/gr-plp-rear.webp",
       summary: "Rear tractor lug tyre for power and flotation.",
       features: ["Lug pattern", "Tube-type casing", "Rear tractor service"]
     }

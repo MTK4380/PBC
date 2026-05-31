@@ -37,7 +37,7 @@
     var mediaStyle = "min-height:6.75rem;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0.5rem;";
     var imageStyle = "display:block;width:auto;height:7rem;max-width:100%;max-height:7rem;object-fit:contain;";
     var imageAlt = item.imageAlt || title + " tyre";
-    var imageUrl = item.image ? item.image + "?v=20260531-plp-imgfix1" : "";
+    var imageUrl = item.image ? item.image + "?v=20260531-plp-imgfix2" : "";
     var image = item.image
       ? "<div class="catalog-product-media" style="" + mediaStyle + ""><button type="button" class="tyre-image-zoom js-image-zoom" data-zoom-src="" + escapeHtml(imageUrl) + "" data-zoom-alt="" + escapeHtml(imageAlt) + "" aria-label="View larger image of " + escapeHtml(imageAlt) + ""><img src="" + escapeHtml(imageUrl) + "" alt="" + escapeHtml(imageAlt) + "" loading="lazy" style="" + imageStyle + ""></button></div>"
       : "<div class="catalog-product-media catalog-product-media--placeholder" aria-hidden="true" style="" + mediaStyle + ""></div>";
